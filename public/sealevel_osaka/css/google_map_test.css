@@ -5,6 +5,32 @@ body {
     padding: 0;
 }
 
+hr {
+  height: 1px;
+  border: none;
+  border-top: 1px #000000 solid;
+}
+
+body{
+    margin: 0;
+    padding: 100px 0 50px 0;
+}
+* html body{
+    overflow: hidden;
+}
+div#headerArea {
+    position: fixed !important;
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100px;
+}
+* html div#contentsArea{
+    height: 100%;
+    overflow: auto;
+}
+
 .map {
   width:1150px;
   height:700px;
@@ -15,8 +41,7 @@ body {
   height:30px;
 }
 
-hr {
-  height: 1px;
-  border: none;
-  border-top: 1px #000000 solid;
+.sora {
+  width:100%;
+  height:100%;
 }
