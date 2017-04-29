@@ -2,36 +2,25 @@
 <html>
 
 <head>
-    <title>google map test</title>
+    <title>osaka</title>
     <meta name="viewport" content="initial-scale=1.0, user-scalable=no">
     <meta charset="utf-8">
     <link rel="stylesheet" type="text/css" href="css/google_map_test.css">
     <link href="bootstrap/css/bootstrap.min.css" rel="stylesheet">
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script>
-    <script src="bootstrapjs/bootstrap.min.js"></script>
+    <script src="bootstrap/js/bootstrap.min.js"></script>
 
     <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyDx1bI17URF6FhP87LEYruo0rHj782zMcw&callback=initMap" async defer></script>
     <script type="text/javascript" src="js/google_map_test.js"></script>
+
+    <style>
+    body {
+      background: url(img/sor0087-024.jpg) center center / cover no-repeat fixed;
+    }
+    </style>
 </head>
 
-<body class="bg-primary" onload="initialize()">
-  <div class="container-fluid">
-    <div class="row">
-      <div id="headerArea">
-        <button class="btn btn-default col-sm2" onclick="setSuii(0)">0m</button>
-        <button class="btn btn-default col-sm2" onclick="setSuii(1)">1m</button>
-        <button class="btn btn-default col-sm2" onclick="setSuii(2)">2m</button>
-        <button class="btn btn-default col-sm2" onclick="setSuii(3)">3m</button>
-        <button class="btn btn-default col-sm2" onclick="setSuii(4)">4m</button>
-        <button class="btn btn-default col-sm2" onclick="setSuii(5)">5m</button>
-        <button class="btn btn-default col-sm3" onclick="goSpace()">宇宙へ...</button>
-        <hr>
-      </div>
-      <div id="contentsArea">
-        <div id="map" class="map"></div>
-      </div>
-    </div>
-  </div>
+<body class="bg-primary" onload="wait()">
 </body>
 
 </html>

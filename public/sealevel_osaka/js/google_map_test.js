@@ -1,6 +1,18 @@
 var map = null;
 var overlay = null;
 
+function goMap() {
+  var query = getUrlVars();
+  location.href = "/sealevel_osaka/map.html?level=" + query['level'];
+}
+
+function wait() {
+  $(this).delay(1000).queue(function() {
+    $(this).dequeue();
+    goMap();
+  });
+}
+
 function initialize() {
 
     var query = getUrlVars();
