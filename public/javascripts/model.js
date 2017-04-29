@@ -106,9 +106,9 @@ function touchEvent() {
 
 		// osaka point
 		if(
-					 (obj[0].point.x < -46 && obj[0].point.x > -48)
-				&& (obj[0].point.y > 44 && obj[0].point.y < 46)
-				&& (obj[0].point.z < -45 && obj[0].point.z > -47)
+					 (obj[0].point.x < -38 && obj[0].point.x > -52)
+				&& (obj[0].point.y > 40 && obj[0].point.y < 50)
+				&& (obj[0].point.z < -41111 && obj[0].point.z > -51)
 		) {
 			location.href = "/sealevel_osaka/index.html" + "?level=" + sun_count
 			console.log("click osaka")
