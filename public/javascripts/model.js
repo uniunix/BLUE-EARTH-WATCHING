@@ -73,6 +73,18 @@ function createEarth(texture) {
 	sphereEarth.position.set(0, 0, 0);
 	scene.add(sphereEarth);
 	rayReceiveObjects.push(sphereEarth);
+
+	// Pin
+	var pinGeometry = new THREE.SphereGeometry(1);
+	var pinMaterial = new THREE.MeshBasicMaterial({
+		    color : 0x660000,
+	});
+	var pin = new THREE.Mesh(pinGeometry, pinMaterial)
+	// Osaka position
+	var vector = new THREE.Vector3(-47, 45,-46);
+	//vector.unproject(sphereEarth.position);
+	pin.position.set(vector.x, vector.y, vector.z)
+	scene.add(pin)
 };
 
 
@@ -88,7 +100,7 @@ function touchEvent() {
 		var obj = ray.intersectObjects(rayReceiveObjects);
 
 		if(obj.length > 0){
-			console.log("clicked: " + vector.x + ", " + vector.y + "," + vector.z)
+			console.log("clicked: " + obj[0].point.x + ", " + obj[0].point.y + "," + obj[0].point.z)
 		}
 
 	}, false);
