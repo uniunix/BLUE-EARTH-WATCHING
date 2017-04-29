@@ -31,10 +31,7 @@ button#sun_button {
 	position: absolute;
 	right: 10px;
 	top: 10px;
-	height: 80px;
-	width: 80px;
 	border: 0px;
-	background-size: 80px;
 	background-repeat: no-repeat;
 	background-position: center;
 	background-color: rgba(0, 0, 0, 0);

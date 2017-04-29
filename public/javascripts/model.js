@@ -101,19 +101,17 @@ function touchEvent() {
 		var obj = ray.intersectObjects(rayReceiveObjects);
 
 		if(obj.length > 0){
-				console.log("clicked: " + obj[0].point.x + ", " + obj[0].point.y + "," + obj[0].point.z)
+			console.log("clicked: " + obj[0].point.x + ", " + obj[0].point.y + "," + obj[0].point.z)
+			// osaka point
+			if(
+						 (obj[0].point.x < -38 && obj[0].point.x > -52)
+					&& (obj[0].point.y > 40 && obj[0].point.y < 50)
+					&& (obj[0].point.z < -41 && obj[0].point.z > -51)
+			) {
+				location.href = "/sealevel_osaka/index.html" + "?level=" + sun_count
+				console.log("click osaka")
+			}
 		}
-
-		// osaka point
-		if(
-					 (obj[0].point.x < -38 && obj[0].point.x > -52)
-				&& (obj[0].point.y > 40 && obj[0].point.y < 50)
-				&& (obj[0].point.z < -41111 && obj[0].point.z > -51)
-		) {
-			location.href = "/sealevel_osaka/index.html" + "?level=" + sun_count
-			console.log("click osaka")
-		}
-
 
 	}, false);
 }
@@ -135,14 +133,26 @@ function render() {
 
 ////// Sun Button //////
 sun_button = document.getElementById('sun_button');
-sun_button.style.backgroundImage = "url(/images/sun_lv1.png)"
 sun_count = 0
-sun_button.onclick=function () {
+sun_current_size = 80
+sun_init_size = sun_current_size
+sun_button.style.backgroundSize = "" + sun_current_size + "px"
+sun_button.style.height = "" + sun_current_size + "px"
+sun_button.style.width = "" + sun_current_size + "px"
+sun_button.style.backgroundImage = "url(/images/sun_lv1.png)"
+
+sun_button.onclick = function () {
 	sun_count += 1
+	sun_current_size = sun_current_size * 1.1
 	if (sun_count == 7) {
 		sun_count = 0
+		sun_current_size = sun_init_size
 	}
+	console.log(sun_current_size)
 	file_count = sun_count + 1
+	sun_button.style.backgroundSize = "" + sun_current_size + "px"
+	sun_button.style.height = "" + sun_current_size + "px"
+	sun_button.style.width = "" + sun_current_size + "px"
 	sun_button.style.backgroundImage = "url(/images/sun_lv" + file_count + ".png)"
 	sphereEarth.material = new THREE.MeshLambertMaterial({
 		map: textures[sun_count]
