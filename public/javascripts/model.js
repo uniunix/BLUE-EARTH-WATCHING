@@ -34,7 +34,7 @@ scene.add(light);
 // Track ball
 trackball = new THREE.TrackballControls(camera);
 trackball.minDistance = 200;
-trackball.maxDistance = 500;
+trackball.maxDistance = 300;
 trackball.noPan = false; 
 
 
@@ -65,8 +65,8 @@ var sphereEarth;
 // Create earth
 function createEarth(texture) {
 	sphereEarth = new THREE.Mesh(
-		new THREE.SphereGeometry(80, 20, 20), // 形状    
-		new THREE.MeshLambertMaterial({ // 材質         
+		new THREE.SphereGeometry(80, 20, 20),    
+		new THREE.MeshLambertMaterial({         
 			map: texture
 		})
 	);
@@ -84,12 +84,11 @@ function touchEvent() {
 		var vector = new THREE.Vector3(mouse_x, mouse_y, 0.5);
 		vector.unproject(camera);
 
-		var ray = new THREE.Raycaster(camera.position, vector.sub(camera.position).normalize()); // レイの作成
-		var obj = ray.intersectObjects(rayReceiveObjects); // レイがメッシュに衝突するかどうか
-		// 戻り値は、衝突したメッシュが配列で入っている。
+		var ray = new THREE.Raycaster(camera.position, vector.sub(camera.position).normalize()); 
+		var obj = ray.intersectObjects(rayReceiveObjects);
 
 		if(obj.length > 0){
-			console.log('clicked')
+			console.log("clicked: " + vector.x + ", " + vector.y + "," + vector.z)
 		}
 
 	}, false);
