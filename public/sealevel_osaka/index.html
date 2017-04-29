@@ -17,15 +17,19 @@
 <body class="bg-primary" onload="initialize()">
   <div class="container-fluid">
     <div class="row">
-      <button class="btn btn-default col-sm2" onclick="setSuii(0)">0m</button>
-      <button class="btn btn-default col-sm2" onclick="setSuii(1)">1m</button>
-      <button class="btn btn-default col-sm2" onclick="setSuii(2)">2m</button>
-      <button class="btn btn-default col-sm2" onclick="setSuii(3)">3m</button>
-      <button class="btn btn-default col-sm2" onclick="setSuii(4)">4m</button>
-      <button class="btn btn-default col-sm2" onclick="setSuii(5)">5m</button>
-      <button class="btn btn-default col-sm3" onclick="goSpace()">宇宙へ...</button>
-      <hr>
-      <div id="map" class="map"></div>
+      <div id="headerArea">
+        <button class="btn btn-default col-sm2" onclick="setSuii(0)">0m</button>
+        <button class="btn btn-default col-sm2" onclick="setSuii(1)">1m</button>
+        <button class="btn btn-default col-sm2" onclick="setSuii(2)">2m</button>
+        <button class="btn btn-default col-sm2" onclick="setSuii(3)">3m</button>
+        <button class="btn btn-default col-sm2" onclick="setSuii(4)">4m</button>
+        <button class="btn btn-default col-sm2" onclick="setSuii(5)">5m</button>
+        <button class="btn btn-default col-sm3" onclick="goSpace()">宇宙へ...</button>
+        <hr>
+      </div>
+      <div id="contentsArea">
+        <div id="map" class="map"></div>
+      </div>
     </div>
   </div>
 </body>
