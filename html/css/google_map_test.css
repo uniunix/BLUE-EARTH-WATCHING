@@ -1,0 +1,22 @@
+html,
+body {
+    height: 100%;
+    margin: 0;
+    padding: 0;
+}
+
+.map {
+  width:1150px;
+  height:700px;
+}
+
+.button {
+  width:30px;
+  height:30px;
+}
+
+hr {
+  height: 1px;
+  border: none;
+  border-top: 1px #000000 solid;
+}
