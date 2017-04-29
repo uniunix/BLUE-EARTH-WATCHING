@@ -1,16 +1,18 @@
 //シーンの作成
 var scene = new THREE.Scene();
 	
+canvas = document.getElementById('canvas');
+
 //シーンの大きさ
-var scene_w  = document.body.clientWidth;//横
-var scene_h = document.body.clientHeight;//縦
+var scene_w  = canvas.clientWidth;//横
+var scene_h = canvas.clientHeight;//縦
 
 //window.alert(scene_h);	
 // Init renderer
 var renderer = new THREE.WebGLRenderer({ antialias:true, alpha: true });
 renderer.setSize( scene_w, scene_h );
 renderer.setClearColor(0x000000, 0);//背景色
-document.body.appendChild(renderer.domElement);//最後に生成した要素を追加
+canvas.appendChild(renderer.domElement);//最後に生成した要素を追加
 
 // Camera setting
 var fov    = 60; //画角
@@ -39,14 +41,26 @@ trackball.noPan = false;
 var rayReceiveObjects = []
 
 // Prepare earth texture
-//imagePath = '/images/earth.png'
-imagePath = '/images/earth2048.jpg'
-loader = new THREE.TextureLoader();
-loader.load(imagePath, function(texture) {
-	createEarth(texture);
-	
+textures = []
+function loadTextures(num, callback) {
+	if (num > 0) {
+		loader = new THREE.TextureLoader();
+		imagePath = "/images/earth_lv" + num + ".jpg"
+		loader.load(imagePath, function(texture) {
+			textures[num - 1] = texture
+			loadTextures(num - 1, callback)
+		});
+	} else {
+		callback()
+	}
+}
+loadTextures(7, function() {
+	createEarth(textures[0]);
+				
 	render();
 });
+
+var sphereEarth;
 
 // Create earth
 function createEarth(texture) {
@@ -82,16 +96,34 @@ function touchEvent() {
 }
 
 
-
 function render() {
 	touchEvent();
 	renderer.render(scene, camera);
 }
 
-//アニメーション
+// Animation
 ( function renderLoop () {
 	requestAnimationFrame( renderLoop );
-	// 表示する
+	
 	renderer.render( scene, camera );
 	trackball.update();
 } )();	
+
+
+////// Sun Button //////
+sun_button = document.getElementById('sun_button');
+sun_button.style.backgroundImage = "url(/images/sun_lv1.png)"
+sun_count = 0
+sun_button.onclick=function () {
+	sun_count += 1
+	if (sun_count == 7) {
+		sun_count = 0
+	}
+	file_count = sun_count + 1
+	sun_button.style.backgroundImage = "url(/images/sun_lv" + file_count + ".png)" 
+	sphereEarth.material = new THREE.MeshLambertMaterial({
+		map: textures[sun_count]
+	})
+	console.log("Sun: Lv." + sun_count)
+};
+

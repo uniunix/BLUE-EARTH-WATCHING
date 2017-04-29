@@ -15,8 +15,29 @@ body {
 	margin-right: auto;
 }
 
-canvas {
+div#canvas {
 	background-image: url("/images/backimage.png");
+	width: 100%;
+	height: 100%;
+	margin: 0;
+	padding: 0;
+	border: 0;
+	text-align: center;
+	margin-left: auto;
+	margin-right: auto;
+}
+
+button#sun_button {
+	position: absolute;
+	right: 30px;
+	top: 50px;
+	height: 120px;
+	width: 120px;
+	border: 0px;
+	background-size: 120px;
+	background-repeat: no-repeat;
+	background-position: center;
+	background-color: rgba(0, 0, 0, 0);
 }
 
 .cesium {
