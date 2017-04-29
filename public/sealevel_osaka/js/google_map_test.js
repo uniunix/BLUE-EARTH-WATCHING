@@ -3,6 +3,8 @@ var overlay = null;
 
 function initialize() {
 
+    var query = getUrlVars();
+
     //Google Maps API初期化
     geocoder = new google.maps.Geocoder();
 		var mapOptions = {
@@ -20,45 +22,7 @@ function initialize() {
       streetViewControl:false
     };
     map = new google.maps.Map(document.getElementById('map'), mapOptions);
-
-    //マップ上の表示領域が変化した際の処理
-    google.maps.event.addListener(map, 'bounds_changed', function() {
-		var latOutput = document.getElementById('lat');
-		var lngOutput = document.getElementById('lng');
-
-		var swlatOutput = document.getElementById('swlat');
-		var swlngOutput = document.getElementById('swlng');
-
-		//北東緯度経度表示エレメント
-		var nelatOutput = document.getElementById('nelat');
-		var nelngOutput = document.getElementById('nelng');
-
-		var latlngBounds = map.getBounds();
-
-		//マップ中心の緯度経度取得
-		var centerLatlng = latlngBounds.getCenter();
-		var ceLat = centerLatlng.lat();
-		var ceLng = centerLatlng.lng();
-
-		latOutput.innerText = ceLat;
-		lngOutput.innerText = ceLng;
-
-		//マップ南西の緯度経度取得
-		var swLatlng = latlngBounds.getSouthWest();
-		var swlat = swLatlng.lat();
-		var swlng = swLatlng.lng();
-		swlatOutput.innerText = swlat;
-		swlngOutput.innerText = swlng;
-
-		//マップ北東の緯度経度取得
-		var neLatlng = latlngBounds.getNorthEast();
-		var nelat = neLatlng.lat();
-		var nelng = neLatlng.lng();
-		nelatOutput.innerText = nelat;
-		nelngOutput.innerText = nelng;
-    });
-
-    setOverlay(0);
+    setOverlay(query['level']);
 }
 
 function setSuii(m) {
@@ -88,4 +52,26 @@ function setOverlay(m) {
 
   //マップに設定
   overlay.setMap(map);
+}
+var val = getUrlVars();
+
+/**
+ * URL解析して、クエリ文字列を返す
+ * @returns {Array} クエリ文字列
+ */
+function getUrlVars()
+{
+    var vars = [], max = 0, hash = "", array = "";
+    var url = window.location.search;
+
+        //?を取り除くため、1から始める。複数のクエリ文字列に対応するため、&で区切る
+    hash  = url.slice(1).split('&');
+    max = hash.length;
+    for (var i = 0; i < max; i++) {
+        array = hash[i].split('=');    //keyと値に分割。
+        vars.push(array[0]);    //末尾にクエリ文字列のkeyを挿入。
+        vars[array[0]] = array[1];    //先ほど確保したkeyに、値を代入。
+    }
+
+    return vars;
 }

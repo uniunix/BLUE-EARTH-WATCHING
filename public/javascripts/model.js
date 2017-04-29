@@ -1,13 +1,13 @@
 //シーンの作成
 var scene = new THREE.Scene();
-	
+
 canvas = document.getElementById('canvas');
 
 //シーンの大きさ
 var scene_w  = canvas.clientWidth;//横
 var scene_h = canvas.clientHeight;//縦
 
-//window.alert(scene_h);	
+//window.alert(scene_h);
 // Init renderer
 var renderer = new THREE.WebGLRenderer({ antialias:true, alpha: true });
 renderer.setSize( scene_w, scene_h );
@@ -35,7 +35,7 @@ scene.add(light);
 trackball = new THREE.TrackballControls(camera);
 trackball.minDistance = 200;
 trackball.maxDistance = 300;
-trackball.noPan = false; 
+trackball.noPan = false;
 
 
 var rayReceiveObjects = []
@@ -56,7 +56,7 @@ function loadTextures(num, callback) {
 }
 loadTextures(7, function() {
 	createEarth(textures[0]);
-				
+
 	render();
 });
 
@@ -65,8 +65,8 @@ var sphereEarth;
 // Create earth
 function createEarth(texture) {
 	sphereEarth = new THREE.Mesh(
-		new THREE.SphereGeometry(80, 20, 20),    
-		new THREE.MeshLambertMaterial({         
+		new THREE.SphereGeometry(80, 20, 20),
+		new THREE.MeshLambertMaterial({
 			map: texture
 		})
 	);
@@ -87,6 +87,7 @@ function createEarth(texture) {
 	scene.add(pin)
 };
 
+var sun_count = 0
 
 // Touch Event
 function touchEvent() {
@@ -96,12 +97,23 @@ function touchEvent() {
 		var vector = new THREE.Vector3(mouse_x, mouse_y, 0.5);
 		vector.unproject(camera);
 
-		var ray = new THREE.Raycaster(camera.position, vector.sub(camera.position).normalize()); 
+		var ray = new THREE.Raycaster(camera.position, vector.sub(camera.position).normalize());
 		var obj = ray.intersectObjects(rayReceiveObjects);
 
 		if(obj.length > 0){
-			console.log("clicked: " + obj[0].point.x + ", " + obj[0].point.y + "," + obj[0].point.z)
+				console.log("clicked: " + obj[0].point.x + ", " + obj[0].point.y + "," + obj[0].point.z)
 		}
+
+		// osaka point
+		if(
+					 (obj[0].point.x < -46 && obj[0].point.x > -48)
+				&& (obj[0].point.y > 44 && obj[0].point.y < 46)
+				&& (obj[0].point.z < -45 && obj[0].point.z > -47)
+		) {
+			location.href = "/sealevel_osaka/index.html" + "?level=" + sun_count
+			console.log("click osaka")
+		}
+
 
 	}, false);
 }
@@ -115,10 +127,10 @@ function render() {
 // Animation
 ( function renderLoop () {
 	requestAnimationFrame( renderLoop );
-	
+
 	renderer.render( scene, camera );
 	trackball.update();
-} )();	
+} )();
 
 
 ////// Sun Button //////
@@ -131,10 +143,9 @@ sun_button.onclick=function () {
 		sun_count = 0
 	}
 	file_count = sun_count + 1
-	sun_button.style.backgroundImage = "url(/images/sun_lv" + file_count + ".png)" 
+	sun_button.style.backgroundImage = "url(/images/sun_lv" + file_count + ".png)"
 	sphereEarth.material = new THREE.MeshLambertMaterial({
 		map: textures[sun_count]
 	})
 	console.log("Sun: Lv." + sun_count)
 };
-
