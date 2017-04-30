@@ -159,3 +159,20 @@ sun_button.onclick = function () {
 	})
 	console.log("Sun: Lv." + sun_count)
 };
+
+
+
+////// Reset Button //////
+reset_button = document.getElementById('reset_button')
+reset_button.onclick = function() {
+	sun_count = 0
+	sun_current_size = sun_init_size
+	sun_button.style.backgroundSize = "" + sun_current_size + "px"
+	sun_button.style.height = "" + sun_current_size + "px"
+	sun_button.style.width = "" + sun_current_size + "px"
+	sun_button.style.backgroundImage = "url(/images/sun_lv1.png)"
+	sphereEarth.material = new THREE.MeshLambertMaterial({
+		map: textures[0]
+	})
+	trackball.reset()
+}
