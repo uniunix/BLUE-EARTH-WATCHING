@@ -19,15 +19,17 @@ body{
     overflow: hidden;
 }
 div#headerArea {
+    margin: 0;
+    padding: 0;
     position: fixed !important;
     position: absolute;
     top: 0;
     left: 0;
     width: 100%;
-    height: 100px;
+    height: 100%;
 }
 * html div#contentsArea{
-    height: 100%;
+    height: 700px;
     overflow: auto;
 }
 
@@ -39,9 +41,4 @@ div#headerArea {
 .button {
   width:30px;
   height:30px;
-}
-
-.sora {
-  width:100%;
-  height:100%;
 }

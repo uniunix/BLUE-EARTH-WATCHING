@@ -35,6 +35,16 @@ function initialize() {
     };
     map = new google.maps.Map(document.getElementById('map'), mapOptions);
     setOverlay(query['level']);
+
+    //背景色設定
+    var m = query['level']
+    if( m > 5 ) m = 5
+    setTopImg(m)
+}
+
+//背景設定
+function setTopImg(m) {
+  document.getElementById('top_img').src = "img/" + m + "m.png";
 }
 
 function setSuii(m) {
