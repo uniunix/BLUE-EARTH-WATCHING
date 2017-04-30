@@ -74,17 +74,28 @@ function createEarth(texture) {
 	scene.add(sphereEarth);
 	rayReceiveObjects.push(sphereEarth);
 
-	// Pin
-	var pinGeometry = new THREE.SphereGeometry(1);
-	var pinMaterial = new THREE.MeshBasicMaterial({
-		    color : 0x660000,
+	loader = new THREE.TextureLoader();
+	imagePath = "/images/pin.png"
+	loader.load(imagePath, function(texture) {
+		// Pin
+		//var pinGeometry = new THREE.SphereGeometry(1);
+		var pinGeometry = new THREE.PlaneGeometry(5, 5);
+		var pinMaterial = new THREE.MeshBasicMaterial({
+			map : texture
+		});
+		// Osaka position
+		var vector = new THREE.Vector3(-47, 49,-46);
+		//vector.unproject(sphereEarth.position);
+		var pin1 = new THREE.Mesh(pinGeometry, pinMaterial)
+		pin1.position.set(vector.x, vector.y, vector.z)
+		//pin1.rotation.z = 45 * Math.PI / 180;
+		scene.add(pin1)
+		var pin2 = new THREE.Mesh(pinGeometry, pinMaterial)
+		pin2.position.set(vector.x, vector.y, vector.z)
+		//pin2.rotation.z = 45 * Math.PI / 180;
+		pin2.rotation.y = 180 * Math.PI / 180;
+		scene.add(pin2)
 	});
-	var pin = new THREE.Mesh(pinGeometry, pinMaterial)
-	// Osaka position
-	var vector = new THREE.Vector3(-47, 45,-46);
-	//vector.unproject(sphereEarth.position);
-	pin.position.set(vector.x, vector.y, vector.z)
-	scene.add(pin)
 };
 
 var sun_count = 0
