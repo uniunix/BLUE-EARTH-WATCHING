@@ -16,9 +16,11 @@
 
 <body style="background-color:black;" onload="initialize()">
       <div id="headerArea">
-        <img id="top_img" class="top_img" src="img/1m.png" />
-        <span><img id="top_txt" class="top_txt" src="img/1m_info.png" /></span>
-        <button class="btn btn-default col-sm3" onclick="goSpace()">宇宙へ...</button>
+        <div id="top_img">
+			<!--<img id="top_img" class="top_img" src="img/1m.png" />-->
+			<img id="top_txt" class="top_txt" src="img/1m_info.png" />
+		</div>
+        <div align="center"><button id="back" class="btn btn-default col-sm3" onclick="goSpace()"></button></div>
       </div>
       <div id="contentsArea" class="center-block">
         <div id="map" class="map"></div>

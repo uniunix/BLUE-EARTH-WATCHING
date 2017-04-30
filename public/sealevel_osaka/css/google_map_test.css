@@ -1,6 +1,7 @@
 html,
 body {
     height: 100%;
+	width: 100%;
     margin: 0;
     padding: 0;
 }
@@ -19,20 +20,19 @@ body{
     overflow: hidden;
 }
 div#headerArea {
-    margin: 0;
-    padding: 0;
-    position: fixed !important;
-    position: absolute;
+	position: fixed;
     top: 0;
     left: 0;
     width: 100%;
-    height: 100%;
+	height: 155px;
 }
-* html div#contentsArea{
+div#contentsArea{
     height:580px;
     margin: 0;
     padding: 0;
-    position: absolute;
+    /*position: fixed;
+	top:0;
+	left:0;*/
     overflow: auto;
 }
 
@@ -40,21 +40,28 @@ div#headerArea {
   width:1150px;
   height:580px;
 }
-.top_txt {
+img#top_txt {
    margin:0;
    padding:0;
-   position:absolute;
-   width:640px;
-   height:180px;
+   width: 100%;
+   /*width:540px;
+   height:153px;*/
 }
-.top_img {
-   margin:0;
-   padding:0;
-   position:absolute;
+div#top_img {
    width:100%;
-   height:180px;
+   /*height:153px;*/
+   background-size: 100%;
+   background-image:url(../img/1m.png);
+   background-repeat: no-repeat
 }
-.button {
-  width:30px;
-  height:30px;
+button#back {
+  width: 55px;
+  height:22px;
+  margin-left: 5px;
+  margin-top: 5px;
+  border:0px;
+  background-size:100%;
+  background-image:url(../img/back.png);
+  background-repeat:no-repeat;
+  background-color:rgba(0,0,0,0);
 }
