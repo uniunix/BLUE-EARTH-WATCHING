@@ -142,6 +142,13 @@ function render() {
 } )();
 
 
+// Each params
+meters = [0, 50, 100, 150, 200, 250, 300]
+degrees = [0, 350, 700, 1050, 1400, 1750, 2100]
+// params
+document.getElementById("params").innerHTML = "meter: +" + meters[0] + " m<br>" + "degree: +" + degrees[0] + " deg C";
+
+
 ////// Sun Button //////
 sun_button = document.getElementById('sun_button');
 sun_count = 0
@@ -165,9 +172,13 @@ sun_button.onclick = function () {
 	sun_button.style.height = "" + sun_current_size + "px"
 	sun_button.style.width = "" + sun_current_size + "px"
 	sun_button.style.backgroundImage = "url(/images/sun_lv" + file_count + ".png)"
+	// Change earth texture
 	sphereEarth.material = new THREE.MeshLambertMaterial({
 		map: textures[sun_count]
 	})
+	// Change labels
+	// prams
+	document.getElementById("params").innerHTML = "meter: +" + meters[sun_count] + " m<br>" + "degree: +" + degrees[sun_count] + " deg C";
 	console.log("Sun: Lv." + sun_count)
 };
 
@@ -185,5 +196,7 @@ reset_button.onclick = function() {
 	sphereEarth.material = new THREE.MeshLambertMaterial({
 		map: textures[0]
 	})
+	document.getElementById("params").innerHTML = "meter: +" + meters[0] + " m<br>" + "degree: +" + degrees[0] + " deg C";
+
 	trackball.reset()
 }

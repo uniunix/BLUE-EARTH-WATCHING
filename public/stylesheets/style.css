@@ -44,6 +44,15 @@ div#header {
 	font-family: sans-serif;
 }
 
+div#params {
+	color: #ffffff;
+	font-size:large;
+	font-family:sans-serif;
+	position: absolute;
+	left: 10px;
+	top: 10px;
+}
+
 button#sun_button {
 	position: absolute;
 	right: 10px;
