@@ -45,6 +45,7 @@ function initialize() {
 //背景設定
 function setTopImg(m) {
   document.getElementById('top_img').src = "img/" + m + "m.png";
+  document.getElementById('top_txt').src = "img/" + m + "m_info.png";
 }
 
 function setSuii(m) {
