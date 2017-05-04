@@ -35,6 +35,8 @@ button#back {
   top:$header_h;
   left:0;
   width: 100vw;
+  padding: 10px;
+  margin: 10px;
   height: 25px;
   border: 0px;
   background-size: contain;
@@ -45,12 +47,12 @@ button#back {
 div#contentsArea{
     position:relative;
     height:80vh;
-    top:$header_h + 25;
+    top:$header_h + 45;
     margin: 0;
     padding: 0;
     overflow: auto;
 }
 .map {
   width:1150px;
-  height:580px;
+  height:600px;
 }

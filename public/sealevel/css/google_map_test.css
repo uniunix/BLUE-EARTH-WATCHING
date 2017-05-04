@@ -28,6 +28,8 @@ button#back {
   top: 120px;
   left: 0;
   width: 100vw;
+  padding: 10px;
+  margin: 10px;
   height: 25px;
   border: 0px;
   background-size: contain;
@@ -38,13 +40,13 @@ button#back {
 div#contentsArea {
   position: relative;
   height: 80vh;
-  top: 145px;
+  top: 165px;
   margin: 0;
   padding: 0;
   overflow: auto; }
 
 .map {
   width: 1150px;
-  height: 580px; }
+  height: 600px; }
 
 /*# sourceMappingURL=google_map_test.css.map */
