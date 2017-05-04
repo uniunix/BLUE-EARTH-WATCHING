@@ -146,7 +146,8 @@ function render() {
 meters = [0, 50, 100, 150, 200, 250, 300]
 degrees = [0, 350, 700, 1050, 1400, 1750, 2100]
 // params
-document.getElementById("params").innerHTML = "meter: +" + meters[0] + " m<br>" + "degree: +" + degrees[0] + " deg C";
+//document.getElementById("params").innerHTML = "meter: +" + meters[0] + " m<br>" + "degree: +" + degrees[0] + " deg C";
+document.getElementById("params").innerHTML = "meter: +" + meters[0] + " m";
 
 
 ////// Sun Button //////
@@ -178,7 +179,8 @@ sun_button.onclick = function () {
 	})
 	// Change labels
 	// prams
-	document.getElementById("params").innerHTML = "meter: +" + meters[sun_count] + " m<br>" + "degree: +" + degrees[sun_count] + " deg C";
+	//document.getElementById("params").innerHTML = "meter: +" + meters[sun_count] + " m<br>" + "degree: +" + degrees[sun_count] + " deg C";
+	document.getElementById("params").innerHTML = "meter: +" + meters[sun_count] + " m";
 	console.log("Sun: Lv." + sun_count)
 };
 
