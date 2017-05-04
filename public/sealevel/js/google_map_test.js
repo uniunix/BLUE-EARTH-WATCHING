@@ -2,22 +2,32 @@
 var map = null;
 // overlay画像 インスタンス
 var overlay = null;
-
+    
+    
 // 各地の地図情報
 var map_data = {
     'osaka': {
         map_pos: [34.6706714, 135.423291],
-        image_pos: [34.725, 135.2995, 34.6202, 135.5225],
+        image_pos: [
+            34.725, 135.2995,   // 北,東
+            34.6202, 135.5225   // 南,西
+        ],
         level: 13
     },
     'washington': {
         map_pos: [38.649898, -76.110904],
-        image_pos: [40.53, -72.95, 36.79, -79.27],
+        image_pos: [
+            39.53, -72.95,      // 北,東
+            36.79, -79.27       // 南,西
+        ],
         level: 8
     },
     'houston': {
-        map_pos: [38.649898, -76.110904],
-        image_pos: [40.53, -72.95, 36.79, -79.27],
+        map_pos: [29.568426,-94.817874],
+        image_pos: [
+            31.52, -91.22,      // 北,東
+            27.91, -98.41       // 南,西
+        ],
         level: 8
     }
 }
@@ -103,7 +113,8 @@ function setOverlay(m) {
     var bounds = new google.maps.LatLngBounds();
 
     //画像の配置位置指定(34.671942, 135.411618)
-    // 縦,横
+    // 北,東
+    // 南,南
     bounds.extend(new google.maps.LatLng(img_pos[0], img_pos[1]));
     bounds.extend(new google.maps.LatLng(img_pos[2], img_pos[3]));
 
