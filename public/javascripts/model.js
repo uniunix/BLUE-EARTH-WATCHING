@@ -113,15 +113,22 @@ function touchEvent() {
 
 		if(obj.length > 0){
 			console.log("clicked: " + obj[0].point.x + ", " + obj[0].point.y + "," + obj[0].point.z)
-			// osaka point
-			if(
-				(obj[0].point.x < -25 && obj[0].point.x > -59)
-				&& (obj[0].point.y > 33 && obj[0].point.y < 57)
-				&& (obj[0].point.z < -34 && obj[0].point.z > -58)
-			) {
-				location.href = "/sealevel_osaka/index.html" + "?level=" + sun_count
-				console.log("click osaka")
-			}
+            // osaka point
+            if (
+                (obj[0].point.x < -25 && obj[0].point.x > -59) &&
+                (obj[0].point.y > 33 && obj[0].point.y < 57) &&
+                (obj[0].point.z < -34 && obj[0].point.z > -58)
+            ) {
+                location.href = '/sealevel/index.html' + '?level=' + sun_count + '&city=osaka'
+                console.log('click osaka')
+            }
+            // houston point
+            else if (
+                false
+            ) {
+                location.href = '/sealevel/index.html' + '?level=' + sun_count + '&city=houston'
+                console.log('click houston')
+            }
 		}
 
 	}, false);
