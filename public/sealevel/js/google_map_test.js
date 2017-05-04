@@ -2,6 +2,8 @@
 var map = null;
 // overlay画像 インスタンス
 var overlay = null;
+// 水位レベル
+var waterLevel = 0;
     
     
 // 各地の地図情報
@@ -22,7 +24,7 @@ var map_data = {
             27.91, -98.41       // 南,西
         ],
         level: 9,
-        mapType:'terrain',
+        mapType: 'hybrid',
     },
     'hongkong': {
         map_pos: [23.054193,115.55372],
@@ -31,7 +33,7 @@ var map_data = {
             19.05,  111.065       // 南,西
         ],
         level: 8,
-        mapType:'roadmap',
+        mapType: 'hybrid',
     },
     'washington': {
         map_pos: [38.649898, -76.110904],
@@ -40,7 +42,7 @@ var map_data = {
             36.79, -79.27       // 南,西
         ],
         level: 9,
-        mapType:'terrain',
+        mapType: 'hybrid',
     },
 }
 
@@ -64,6 +66,12 @@ function waitTransMap() {
     });
 }
 
+//水位を上げる
+function upWater() {
+    waterLevel += 1
+    if(5 > waterLevel)waterLevel = 0
+    setSuii(waterLevel)
+}
 
 // トップ画面へ戻る
 function goSpace() {
@@ -141,6 +149,7 @@ function setOverlay(m) {
 
     //マップに設定
     overlay.setMap(map);
+    waterLevel = m
 }
 
 // query文字列取得
