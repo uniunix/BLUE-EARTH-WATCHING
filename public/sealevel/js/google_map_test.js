@@ -12,7 +12,8 @@ var map_data = {
             34.725, 135.2995,   // 北,東
             34.6202, 135.5225   // 南,西
         ],
-        level: 13
+        level: 13,
+        mapType: 'hybrid',
     },
     'washington': {
         map_pos: [38.649898, -76.110904],
@@ -20,7 +21,8 @@ var map_data = {
             40.53, -72.95,      // 北,東
             36.79, -79.27       // 南,西
         ],
-        level: 9
+        level: 9,
+        mapType:'terrain',
     },
     'houston': {
         map_pos: [29.568426,-94.817874],
@@ -28,7 +30,8 @@ var map_data = {
             31.52, -91.22,      // 北,東
             27.91, -98.41       // 南,西
         ],
-        level: 9
+        level: 9,
+        mapType:'terrain',
     }
 }
 
@@ -63,6 +66,8 @@ function initialize() {
     var query = getUrlVars();
     var city = query['city']
     var map_pos = map_data[city]['map_pos']
+    var m = query['level']
+    if (m > 5) m = 5
 
     //Google Maps API初期化
     geocoder = new google.maps.Geocoder();
@@ -73,19 +78,20 @@ function initialize() {
         // satellite は、Google Earth 航空写真を表示します。
         // hybrid は、通常のビューと航空写真ビューの複合ビューを表示します。
         // terrain は、地形情報に基づいた物理地図を表示します。
-        mapTypeId: 'terrain',
+        mapTypeId: map_data[city]['mapType'],
         scrollwheel: false,
         draggable: false,
         disableDoubleClickZoom: false,
         zoomControl: false,
         streetViewControl: false
     };
+
     map = new google.maps.Map(document.getElementById('map'), mapOptions);
-    setOverlay(query['level']);
+    
+    //オーバーレイ画像設定
+    setOverlay(m);
 
     //背景色設定
-    var m = query['level']
-    if (m > 5) m = 5
     setTopImg(m, city)
 }
 

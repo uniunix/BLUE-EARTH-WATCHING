@@ -2,29 +2,28 @@
 <html>
 
 <head>
-    <title>osaka</title>
-    <meta name="viewport" content="initial-scale=1.0, user-scalable=no">
-    <meta charset="utf-8">
-    <link rel="stylesheet" type="text/css" href="css/google_map_test.css">
-    <link href="bootstrap/css/bootstrap.min.css" rel="stylesheet">
-    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script>
-    <script src="bootstrap/js/bootstrap.min.js"></script>
+  <title>osaka</title>
+  <meta name="viewport" content="initial-scale=1.0, user-scalable=no">
+  <meta charset="utf-8">
+  <link rel="stylesheet" type="text/css" href="css/google_map_test.css">
+  <link href="bootstrap/css/bootstrap.min.css" rel="stylesheet">
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script>
+  <script src="bootstrap/js/bootstrap.min.js"></script>
 
-    <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyDx1bI17URF6FhP87LEYruo0rHj782zMcw&callback=initialize" async defer></script>
-    <script type="text/javascript" src="js/google_map_test.js"></script>
+  <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyDx1bI17URF6FhP87LEYruo0rHj782zMcw&callback=initialize" async
+    defer></script>
+  <script type="text/javascript" src="js/google_map_test.js"></script>
 </head>
 
-<body style="background-color:black;" onload="initialize()">
-      <div id="headerArea">
-        <div id="top_img">
-			<!--<img id="top_img" class="top_img" src="img/1m.png" />-->
-			<img id="top_txt" class="top_txt" src="img/1m_info.png" />
-		</div>
-        <div align="center"><button id="back" class="btn btn-default col-sm3" onclick="goSpace()"></button></div>
-      </div>
-      <div id="contentsArea" class="center-block">
-        <div id="map" class="map"></div>
-      </div>
+<body style="width:100%; height:100%; background-color:black;" onload="initialize()">
+  <div id="headerArea">
+    <img id="top_img">
+    <img id="top_txt" class="top_txt" src="img/1m_info.png" />
+    <button id="back" class="btn btn-default col-sm3" onclick="goSpace()"></button>
+  </div>
+  <div id="contentsArea">
+    <div id="map" class="map"></div>
+  </div>
 </body>
 
 </html>

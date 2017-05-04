@@ -1,0 +1,56 @@
+// 変数
+$map_width:1150px;  // 地図領域の幅
+$map_height:580px;  // 地図領域の高さ
+$header_w:380px;    // ヘッダ領域の幅
+$header_h:120px;    // ヘッダ領域の高さ
+
+html,body {
+  overflow: hidden;
+  height: 100%;
+}
+
+div#headerArea {
+	position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+	height: 30vh;
+  overflow: hidden;
+}
+img#top_txt {
+  position:relative;
+  margin:0;
+  padding:0;
+  width:$header_w;
+  height: $header_h;
+  overflow: auto;
+}
+img#top_img {
+  position:absolute;
+	height: $header_h;
+  width:100%;
+}
+button#back {
+  position: absolute;
+  top:$header_h;
+  left:0;
+  width: 100vw;
+  height: 25px;
+  border: 0px;
+  background-size: contain;
+  background-image: url(../img/back.png);
+  background-repeat: no-repeat;
+  background-color: rgba(0, 0, 0, 0);
+}
+div#contentsArea{
+    position:relative;
+    height:80vh;
+    top:$header_h + 25;
+    margin: 0;
+    padding: 0;
+    overflow: auto;
+}
+.map {
+  width:1150px;
+  height:580px;
+}
