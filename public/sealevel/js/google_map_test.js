@@ -15,6 +15,24 @@ var map_data = {
         level: 13,
         mapType: 'hybrid',
     },
+    'houston': {
+        map_pos: [29.568426,-94.817874],
+        image_pos: [
+            31.52, -91.22,      // 北,東
+            27.91, -98.41       // 南,西
+        ],
+        level: 9,
+        mapType:'terrain',
+    },
+    'hongkong': {
+        map_pos: [23.054193,115.55372],
+        image_pos: [
+            26.83,   125.43,      // 北,東
+            19.05,  111.065       // 南,西
+        ],
+        level: 8,
+        mapType:'roadmap',
+    },
     'washington': {
         map_pos: [38.649898, -76.110904],
         image_pos: [
@@ -24,15 +42,6 @@ var map_data = {
         level: 9,
         mapType:'terrain',
     },
-    'houston': {
-        map_pos: [29.568426,-94.817874],
-        image_pos: [
-            31.52, -91.22,      // 北,東
-            27.91, -98.41       // 南,西
-        ],
-        level: 9,
-        mapType:'terrain',
-    }
 }
 
 // 地図画面へ遷移
