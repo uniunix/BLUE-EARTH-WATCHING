@@ -61,6 +61,29 @@ loadTextures(7, function() {
 });
 
 var sphereEarth;
+var pos = {
+	osaka: {
+		x: -47,
+		y: 49,
+		z: -46,
+	},
+	houston: {
+		x: -7,
+		y: 42,
+		z: 69,
+	},
+	washington: {
+		x: 15,
+		y: 54,
+		z: 59
+	},
+	hongkong: {
+		x: -32,
+		y: 34,
+		z: -67 
+	}
+
+}
 
 // Create earth
 function createEarth(texture) {
@@ -74,6 +97,18 @@ function createEarth(texture) {
 	scene.add(sphereEarth);
 	rayReceiveObjects.push(sphereEarth);
 
+	// Osaka pin
+	addPin(new THREE.Vector3(pos.osaka.x, pos.osaka.y, pos.osaka.z), 'osaka')
+	// Houston pin
+	addPin(new THREE.Vector3(pos.houston.x, pos.houston.y, pos.houston.z), 'houston')
+	// Washington pin
+	addPin(new THREE.Vector3(pos.washington.x, pos.washington.y, pos.washington.z), 'washington')
+	// Hong Kong pin
+	addPin(new THREE.Vector3(pos.hongkong.x, pos.hongkong.y, pos.hongkong.z), 'hongkong')
+	
+};
+
+function addPin(vector, name) {
 	loader = new THREE.TextureLoader();
 	imagePath = "/images/pin.png"
 	loader.load(imagePath, function(texture) {
@@ -81,22 +116,35 @@ function createEarth(texture) {
 		//var pinGeometry = new THREE.SphereGeometry(1);
 		var pinGeometry = new THREE.PlaneGeometry(8, 8);
 		var pinMaterial = new THREE.MeshBasicMaterial({
-			map : texture
+			map : texture,
+			transparent: true 
 		});
-		// Osaka position
-		var vector = new THREE.Vector3(-47, 49,-46);
 		//vector.unproject(sphereEarth.position);
 		var pin1 = new THREE.Mesh(pinGeometry, pinMaterial)
 		pin1.position.set(vector.x, vector.y, vector.z)
+		pin1.name = name
 		//pin1.rotation.z = 45 * Math.PI / 180;
 		scene.add(pin1)
 		var pin2 = new THREE.Mesh(pinGeometry, pinMaterial)
 		pin2.position.set(vector.x, vector.y, vector.z)
 		//pin2.rotation.z = 45 * Math.PI / 180;
 		pin2.rotation.y = 180 * Math.PI / 180;
+		pin2.name = name
 		scene.add(pin2)
+		//rayReceiveObjects.push(pin1);
+		//rayReceiveObjects.push(pin2);
 	});
-};
+	
+	// var areaGeometry = new THREE.CubeGeometry(13,13,13);
+	// var areaMaterial = new THREE.MeshBasicMaterial({
+	// 	color: 0x0000ff,
+	// 	transparent: true, 
+	// 	opacity : 0.5
+	// });
+	// var area = new THREE.Mesh(areaGeometry, areaMaterial)
+	// area.position.set(vector.x, vector.y, vector.z)
+	// scene.add(area)
+}
 
 var sun_count = 0
 
@@ -113,21 +161,40 @@ function touchEvent() {
 
 		if(obj.length > 0){
 			console.log("clicked: " + obj[0].point.x + ", " + obj[0].point.y + "," + obj[0].point.z)
+			console.log(obj[0].name)
+
+			const range = 10
             // osaka point
             if (
-                (obj[0].point.x < -25 && obj[0].point.x > -59) &&
-                (obj[0].point.y > 33 && obj[0].point.y < 57) &&
-                (obj[0].point.z < -34 && obj[0].point.z > -58)
+                (obj[0].point.x < pos.osaka.x + range + 4 && obj[0].point.x > pos.osaka.x - range + 4)
+                && (obj[0].point.y < pos.osaka.y + range - 4 && obj[0].point.y > pos.osaka.y - range - 4) 
             ) {
                 location.href = '/sealevel/index.html' + '?level=' + sun_count + '&city=osaka'
                 console.log('click osaka')
             }
             // houston point
             else if (
-                false
+                (obj[0].point.x < pos.houston.x + range + 4 && obj[0].point.x > pos.houston.x - range + 4)
+                && (obj[0].point.y < pos.houston.y + range + 4 && obj[0].point.y > pos.houston.y - range - 4) 
             ) {
                 location.href = '/sealevel/index.html' + '?level=' + sun_count + '&city=houston'
                 console.log('click houston')
+            }
+            // washington point
+            else if (
+                (obj[0].point.x < pos.washington.x + range + 4 && obj[0].point.x > pos.washington.x - range + 4)
+                && (obj[0].point.y < pos.washington.y + range + 4 && obj[0].point.y > pos.washington.y - range - 4) 
+            ) {
+                location.href = '/sealevel/index.html' + '?level=' + sun_count + '&city=washington'
+                console.log('click washington')
+            }
+            // hongkong point
+            else if (
+                (obj[0].point.x < pos.hongkong.x + range + 4 && obj[0].point.x > pos.hongkong.x - range + 4)
+                && (obj[0].point.y < pos.hongkong.y + range + 4 && obj[0].point.y > pos.hongkong.y - range - 4) 
+            ) {
+                location.href = '/sealevel/index.html' + '?level=' + sun_count + '&city=hongkong'
+                console.log('click hongkong')
             }
 		}
 
@@ -205,7 +272,8 @@ reset_button.onclick = function() {
 	sphereEarth.material = new THREE.MeshLambertMaterial({
 		map: textures[0]
 	})
-	document.getElementById("params").innerHTML = "meter: +" + meters[0] + " m<br>" + "degree: +" + degrees[0] + " deg C";
+	//document.getElementById("params").innerHTML = "meter: +" + meters[0] + " m<br>" + "degree: +" + degrees[0] + " deg C";
+	document.getElementById("params").innerHTML = "meter: +" + meters[0] + " m";
 
 	trackball.reset()
 }
